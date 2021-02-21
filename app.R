@@ -4,16 +4,16 @@ library(shiny)
 library(shinyalert) # needed to upload layout files
 source("upload_layout_module.R")
 
-    ui <- fluidPage(useShinyalert(),
+    ui <- fluidPage(useShinyalert(), # required for uploads module
             sidebarLayout(
                         sidebarPanel(width = 4,
-                                     uploadLayoutUI("data")[[1]] # upload panel,
+                                     uploadLayoutUI("data")[[1]] # upload panel
                         ),
                         mainPanel(
                             p("Layout, accessed OUTSIDE the module pair (just the head)") %>% strong(),
-                            tableOutput("table_external"),
+                            tableOutput("table_external"), # table of the layout, accessed outside the module 
                             p("Layout, rendered INSIDE the module pair") %>% strong(),
-                            uploadLayoutUI("data")[[2]] # upload panel,
+                            uploadLayoutUI("data")[[2]] # table of the uploaded layout
                         )
                 )
         )
